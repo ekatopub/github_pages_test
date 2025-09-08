@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 
 <head>
@@ -30,6 +30,7 @@
   <h3>java/Spring Boot2 掲示板</h3>　
   <p><a
       href="https://github.com/ekatopub/java-SpringMVCSample-keijiban">https://github.com/ekatopub/java-SpringMVCSample-keijiban</a>
+    <br />※参考書籍　絶対にJavaプログラマーになりたい人へ　P645-
   </p>
   <h4>開発環境</h4>
   　<p>windows10 Eclipse2025/03 JavaSE-11</p>
@@ -111,8 +112,33 @@
       </tr>
     </tbody>
   </table>
+  <h4>仕様概要</h4>
+
+  <h5>1. 技術スタック</h5>
+  <ul>
+    <li>開発言語: Java/javascript</li>
+    <li>フレームワーク: Spring Framework (Spring Boot)</li>
+    <li>RDBMS: MariaDB</li>
+    <li>O/Rマッパー: Hibernate (spring-boot-starter-data-jpa)</li>
+    <li>ビルドツール: Maven</li>
+  </ul>
+
+  <h5>2. 機能要件</h5>
+  <ul>
+    <li>ログイン機能: ユーザーIDとパスワードによる認証。認証失敗時はエラーメッセージを表示。パスワードはBCryptでハッシュ化して保存。</li>
+    <li>メイン画面: ログイン後に掲示板一覧を表示。</li>
+    <li>投稿機能: 投稿内容を入力し、データベースに登録。投稿内容は50文字以内の制限あり。</li>
+    <li>削除機能: 自分の投稿のみ削除可能。ログインユーザーと投稿ユーザーが一致する場合にのみ削除ボタンが表示される。</li>
+    <li>ログアウト機能: セッションを破棄し、ログイン画面へ戻る。</li>
+  </ul>
+
+  <h5>3. 画面設計</h5>
+  <ul>
+    <li>ログイン画面: ユーザーIDとパスワードの入力フォーム、ログインボタン、エラーメッセージ表示エリア（IDまたはパスワードが間違っている場合）。</li>
+    <li>メイン画面: ログアウトボタン、投稿内容入力フォーム、投稿ボタン、投稿一覧表示エリア、および各投稿の削除ボタン（投稿者本人の場合）。</li>
+  </ul>
   <hr />
-  <h3>java/Spring3</h3>　
+  <h3>java/Spring3学習用</h3>　
   <p><a
       href="https://github.com/ekatopub/java_study_202408_Java_Spring_test/">https://github.com/ekatopub/java_study_202408_Java_Spring_test/</a>
   </p>
