@@ -7,7 +7,17 @@
   <title>ekato's　sample programs</title>
   <!-- loads all the styles (including icons and images) from jsDelivr -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/alvaromontoro/almond.css@latest/dist/almond.min.css" />
+  <style>
+    .pass {
+      color: green;
+      font-weight: bold;
+    }
 
+    .fail {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
 </head>
 
 <body>
@@ -92,7 +102,7 @@
           <ul>
             <li>エラーメッセージの国際化対応（messages.properties）</li>
             <li>入力チェックエラー時のメッセージ表示実装</li>
-            <li>AOPによるSQL実行ログ出力の実装</li>
+            <li>AOPによるログ出力の実装</li>
             <li>機能結合テスト</li>
           </ul>
         </td>
@@ -101,7 +111,7 @@
         <td>5日目</td>
         <td>5h</td>
         <td>
-          <p>最終調整とテスト</p>
+          <p>最終調整とテス
           <ul>
             <li>画面デザインの調整（Bootstrapクラスの適用）</li>
             <li>全体テスト（ブラックボックステスト）</li>
@@ -131,11 +141,158 @@
     <li>削除機能: 自分の投稿のみ削除可能。ログインユーザーと投稿ユーザーが一致する場合にのみ削除ボタンが表示される。</li>
     <li>ログアウト機能: セッションを破棄し、ログイン画面へ戻る。</li>
   </ul>
-
   <h5>3. 画面設計</h5>
   <ul>
     <li>ログイン画面: ユーザーIDとパスワードの入力フォーム、ログインボタン、エラーメッセージ表示エリア（IDまたはパスワードが間違っている場合）。</li>
     <li>メイン画面: ログアウトボタン、投稿内容入力フォーム、投稿ボタン、投稿一覧表示エリア、および各投稿の削除ボタン（投稿者本人の場合）。</li>
+  </ul>
+  <h4>テストレポート</h4>
+
+  <h5>概要</h5>
+  <ul>
+    <li><strong>プロジェクト名:</strong> SpringBoot掲示板</li>
+    <li><strong>テスト対象:</strong> SpringMVCSampleKeijibanApplication</li>
+    <li><strong>テスト担当者:</strong> 加藤</li>
+    <li><strong>テスト期間:</strong> 2025/09/08</li>
+    <li><strong>テスト環境:</strong> Windows11 Google Chrome バージョン 139.0.7258.157（Official Build）</li>
+  </ul>
+
+  <h5>総合評価</h5>
+  <ul>
+    <li><strong>テスト結果:</strong> [合格 / 不合格 / 条件付き合格]</li>
+    <li><strong>特記事項:</strong> [テスト全体を通しての所見や重要な問題点を簡潔に記載]</li>
+  </ul>
+
+  <hr>
+
+  <h5>テストケース詳細</h5>
+
+  <h6>ログイン機能</h6>
+  <table>
+    <thead>
+      <tr>
+        <th>テストID</th>
+        <th>テスト目的</th>
+        <th>テスト手順</th>
+        <th>期待結果</th>
+        <th>実際の結果</th>
+        <th>合否</th>
+        <th>備考</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>FC-01</td>
+        <td>正しいID/PWでログインできるか</td>
+        <td>ID: <code>0003</code> / PW: <code>hogefuga</code> を入力し、ログインボタンをクリックする</td>
+        <td>投稿一覧画面へ遷移する</td>
+        <td>投稿一覧画面へ遷移した</td>
+        <td>[合格]</td>
+        <td>[特記事項]なし</td>
+      </tr>
+      <tr>
+        <td>FC-02</td>
+        <td>無効なID/PWでログインできないか</td>
+        <td>ID: <code>invalid</code> / PW: <code>password</code> を入力し、ログインボタンをクリックする</td>
+        <td>「ユーザーIDまたはパスワードを間違えています」と表示される</td>
+        <td>「ユーザーIDまたはパスワードを間違えています」と表示された</td>
+        <td>[合格]</td>
+        <td>[特記事項]なし</td>
+      </tr>
+      <tr>
+        <td>FC-03</td>
+        <td>英語表示のテスト</td>
+        <td>ブラウザの言語設定を英語に変更し、ID/PWを無効な値に設定する</td>
+        <td>「Invalid user ID or password」と表示される</td>
+        <td>「Invalid user ID or password」と表示された</td>
+        <td>[合格]</td>
+        <td>[特記事項]なし</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h6>投稿機能</h6>
+  <table>
+    <thead>
+      <tr>
+        <th>テストID</th>
+        <th>テスト目的</th>
+        <th>テスト手順</th>
+        <th>期待結果</th>
+        <th>実際の結果</th>
+        <th>合否</th>
+        <th>備考</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>FC-04</td>
+        <td>正常に投稿できるか</td>
+        <td>本文を入力し、投稿ボタンをクリックする</td>
+        <td>投稿がDBに保存され、一覧画面に表示される</td>
+        <td>投稿がDBに保存され、一覧画面に表示された</td>
+        <td>[<span class="pass">合格</span>]</td>
+        <td>[特記事項]なし</td>
+      </tr>
+      <tr>
+        <td>FC-05</td>
+        <td>入力チェックエラー1</td>
+        <td>本文入力欄を空欄にし、投稿ボタンをクリックする</td>
+        <td>「textが入力されていません。」と表示される</td>
+        <td>「textが入力されていません。」と表示された</td>
+        <td>[<span class="pass">合格</span>]</td>
+        <td>[特記事項]なし</td>
+      </tr>
+      <tr>
+        <td>FC-06</td>
+        <td>入力チェックエラー2</td>
+        <td>本文入力欄に50文字以上入力し、投稿ボタンをクリックする</td>
+        <td>「textは、1～50桁で入力して下さい。」と表示される</td>
+        <td>「textは、1～50桁で入力して下さい。」と表示された</td>
+        <td>[<span class="pass">合格</span>]</td>
+        <td>[特記事項]なし</td>
+      </tr>
+      <tr>
+        <td>FC-08</td>
+        <td>削除機能</td>
+        <td>任意のメッセージの削除ボタンをクリックする</td>
+        <td>該当の投稿がDBから削除され、一覧画面からも表示されなくなる</td>
+        <td>該当の投稿がDBから削除され、一覧画面からも表示されなくなった</td>
+        <td>[<span class="pass">合格</span>]</td>
+        <td>[特記事項]他のユーザーの投稿には削除ボタンが表示されないため、他のユーザーの投稿を削除してしまうことはない</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <h5>ログ出力確認</h5>
+  <ul>
+    <li>
+      <strong>ログイン時、AOPによってDBアクセスログが出力されているか？</strong><br>
+      <strong>結果:</strong> [<span class="pass">はい</span>]
+    </li>
+    <li>
+      <strong>SQL文の実行ログが正しく出力されているか？</strong><br>
+      <strong>結果:</strong> [<span class="pass">はい</span>]
+    </li>
+    <li>
+      <strong>ログイン失敗時にエラーログが出力されているか？</strong><br>
+      <strong>結果:</strong> [<span class="pass">はい</span>]
+    </li>
+  </ul>
+  <ul>
+    <li><strong>特記事項:</strong> [ログ出力に関しての所見を記載]</li>
+  </ul>
+
+  <hr>
+
+  <h5>未解決の問題点・課題</h5>
+  <ul>
+    <li><strong>課題名:</strong> ここまでについては問題なし</li>
+    <li><strong>内容:</strong> スケジュールの組み方を間違え、修正などで余計な時間がかかった</li>
+    <li><strong>担当者:</strong> 加藤</li>
+    <li><strong>対応状況:</strong> なし</li>
   </ul>
   <hr />
   <h3>java/Spring3学習用</h3>　
