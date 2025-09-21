@@ -37,13 +37,266 @@
   </ul>
   <hr />
   <h2>Javaプログラムサンプル</h2>
+  <h3>java/Spring Boot3 会議室予約システム</h3>　
+  <p><a
+      href="https://github.com/ekatopub/java-SpringMVCSample-kaigishitsu-yoyaku">https://github.com/ekatopub/java-SpringMVCSample-kaigishitsu-yoyaku</a>
+    <br />※参考書籍　絶対にJavaプログラマーになりたい人へ　P681-
+  </p>
+  <div style="text-align:center;"><img src="./images/SpringMVCSample-kaigishitsu-yoyaku.bmp" height="200" width="auto">
+  </div>
+  <h4>開発環境</h4>
+  　<p>windows10 Eclipse2025/03 JavaSE-11</p>
+  <h4>プロジェクト概要</h4>
+  <p>このプロジェクトは<strong>会議室予約システム</strong>を開発するものです。主な機能は以下の通りです。</p>
+
+  <h5>主な機能</h5>
+  <ul>
+    <li><strong>ログイン機能</strong>: ユーザーIDとパスワードでログインします。ユーザーが存在しない場合はエラーメッセージを表示します。</li>
+    <li><strong>予約画面</strong>:
+      <ul>
+        <li>日付、時間帯、会議室を選択して予約できます。</li>
+        <li>自分が予約した場所は水色、他者が予約した場所はグレーで表示されます。</li>
+        <li>ログイン日を初期表示とし、前日・翌日の予約状況も確認できます。</li>
+      </ul>
+    </li>
+    <li><strong>予約・解除機能</strong>:
+      <ul>
+        <li>チェックを入れた部屋と時間帯の組み合わせで予約を登録・解除できます。</li>
+        <li>予約情報は「洗い替え」方式で、以前の登録情報を論理削除し、新しい情報を新規登録します。</li>
+      </ul>
+    </li>
+    <li><strong>ログアウト機能</strong>: ログインセッションを削除し、ログイン画面へ戻ります。</li>
+  </ul>
+
+  <h5>使用技術</h5>
+  <ul>
+    <li><strong>開発言語</strong>: Java</li>
+    <li><strong>フレームワーク</strong>: Java Spring Framework + JPA + Maven </li>
+    <li><strong>データベース</strong>: MariaDB</li>
+  </ul>
+
+  <h5>テーブル設計</h5>
+  <p>システムは4つのテーブルを使用します。</p>
+  <ul>
+    <li><strong>ユーザーテーブル（<code>user</code>）</strong>:
+      ユーザーID（<code>user_id</code>）とパスワード（<code>password</code>）、ユーザー名（<code>user_name</code>）を管理します。</li>
+    <li><strong>予約情報テーブル（<code>t_reservation</code>）</strong>:
+      予約の主情報（ID、ユーザーID、予約日、部屋ID、時間帯IDなど）を管理します。<code>is_deleted</code>フラグで論理削除を扱います。</li>
+    <li><strong>会議室マスタテーブル（<code>m_room</code>）</strong>: 会議室名（<code>name</code>）と削除フラグ（<code>is_deleted</code>）を管理します。
+    </li>
+    <li><strong>時間帯マスタテーブル（<code>m_time</code>）</strong>: 時間帯名（<code>name</code>）と削除フラグ（<code>is_deleted</code>）を管理します。
+    </li>
+  </ul>
+  <h4>会議室予約システム 開発スケジュール</h4>
+
+  <table>
+    <thead>
+      <tr>
+        <th>日目</th>
+        <th>時間</th>
+        <th>タスク</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1日目</td>
+        <td>5時間</td>
+        <td>
+          <strong>環境構築とログイン機能</strong><br>
+          ・環境セットアップ、DBテーブル作成 (1時間)<br>
+          ・ログイン画面のHTML/Thymeleaf、<code>LoginController</code>の作成 (3時間)<br>
+          ・Spring Securityによる認証処理の実装 (1時間)
+        </td>
+      </tr>
+      <tr>
+        <td>2日目</td>
+        <td>5時間</td>
+        <td>
+          <strong>予約画面のUIとマスタデータ表示</strong><br>
+          ・予約画面のHTML/Thymeleaf作成 (2時間)<br>
+          ・<code>m_time</code>と<code>m_room</code>のRepository/Service実装 (3時間)<br>
+          ・マスタデータの動的表示ロジック実装
+        </td>
+      </tr>
+      <tr>
+        <td>3日目</td>
+        <td>5時間</td>
+        <td>
+          <strong>予約機能の実装</strong><br>
+          ・<code>t_reservation</code>のRepository/Service実装 (3時間)<br>
+          ・予約状況の取得と画面への表示（色付け） (2時間)<br>
+          ・「予約/解除」ボタンのPOSTマッピング実装<br>
+          ・DBへの論理削除と新規登録ロジック実装
+        </td>
+      </tr>
+      <tr>
+        <td>4日目</td>
+        <td>5時間</td>
+        <td>
+          ・過去の日付の予約やキャンセルをできないようにする仕組みを実装(2時間)<br />
+          <strong>テストと最終確認</strong><br>
+          ・各機能の正常系テスト（ログイン、予約、解除、ログアウト） (1時間)<br>
+          ・異常系テスト（未ログイン時のリダイレクトなど） (1時間)<br>
+          ・バグ修正と画面表示の最終確認
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h4>テストレポート</h4>
+
+  <h5>概要</h5>
+  <ul>
+    <li><strong>プロジェクト名:</strong> SpringBoot会議室予約</li>
+    <li><strong>テスト対象:</strong> SpringMVCSampleKaigishitsuYoyaku</li>
+    <li><strong>テスト担当者:</strong> 加藤</li>
+    <li><strong>テスト期間:</strong> 2025/09/20</li>
+    <li><strong>テスト環境:</strong> Windows11 Google Chrome バージョン 139.0.7258.157（Official Build）</li>
+  </ul>
+
+  <h5>総合評価</h5>
+  <ul>
+    <li><strong>テスト結果:</strong> [合格 ]</li>
+    <li><strong>特記事項:</strong> 動作は問題ないが、エラーメッセージを追加したり、他ユーザーによる予約のユーザー名をポップアップ表示させるなどすると親切になる</li>
+  </ul>
+
+  <hr>
+
+  <h5>テストケース詳細</h5>
+
+  <h6>ログイン機能</h6>
+  <table>
+    <thead>
+      <tr>
+        <th>テストID</th>
+        <th>テスト目的</th>
+        <th>テスト手順</th>
+        <th>期待結果</th>
+        <th>実際の結果</th>
+        <th>合否</th>
+        <th>備考</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>FC-01</td>
+        <td>正しいID/PWでログインできるか</td>
+        <td>ID: <code>0001</code> / PW: <code>password01</code> を入力し、ログインボタンをクリックする</td>
+        <td>ログイン後、予約画面が正しく表示される</td>
+        <td>予約画面へ遷移した</td>
+        <td>[<span class="pass">合格</span>]</td>
+        <td>[特記事項]なし</td>
+      </tr>
+      <tr>
+        <td>FC-02</td>
+        <td>無効なID/PWでログインできないか</td>
+        <td>ID: <code>01</code> / PW: <code>password</code> を入力し、ログインボタンをクリックする</td>
+        <td>「ユーザーIDまたはパスワードが間違っています。」と表示される</td>
+        <td>「ユーザーIDまたはパスワードが間違っています。」と表示された</td>
+        <td>[<span class="pass">合格</span>]</td>
+        <td>[特記事項]なし</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h6>予約機能</h6>
+  <table>
+    <thead>
+      <tr>
+        <th>テストID</th>
+        <th>テスト目的</th>
+        <th>テスト手順</th>
+        <th>期待結果</th>
+        <th>実際の結果</th>
+        <th>合否</th>
+        <th>備考</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>FC-03</td>
+        <td>予約可能日時で会議室の予約が完了するか</td>
+        <td>未来の任意の日付・時間の会議室にチェックを入れ、予約・解除ボタンをクリックする</td>
+        <td>予約がDBに保存され、一覧画面に表示される</td>
+        <td>予約がDBに保存され、一覧画面に表示された</td>
+        <td>[<span class="pass">合格</span>]</td>
+        <td>[特記事項]なし</td>
+      </tr>
+      <tr>
+        <td>FC-04</td>
+        <td>自分の予約した会議室を正しく解除できるか。</td>
+        <td>自分が予約した未来の任意の日付・時間の会議室のチェックを外し、予約・解除ボタンをクリックする</td>
+        <td>予約がDBで論理削除され、一覧画面でチェック無しで表示される</td>
+        <td>予約がDBで論理削除され、一覧画面でチェック無しで表示された</td>
+        <td>[<span class="pass">合格</span>]</td>
+        <td>[特記事項]なし</td>
+      </tr>
+      <tr>
+        <td>FC-05</td>
+        <td>過去の日付など、不正な日付で予約できないか。</td>
+        <td>任意の過去の日付・会議室にチェックを入れ、予約・解除ボタンをクリックする</td>
+        <td>チェックを入れることができず、予約・解除ボタンを押しても変わらない</td>
+        <td>チェックを入れることができず、予約・解除ボタンを押しても変わらない</td>
+        <td>[<span class="pass">合格</span>]</td>
+        <td>[特記事項]過去の予約ではチェックボックスが外せないため、他のユーザーの予約を削除してしまうことはないが、ロジックでも拒絶してエラーメッセージを出力するようにした</td>
+      </tr>
+      <tr>
+        <td>FC-06</td>
+        <td>他のユーザーの予約を誤って予約削除できないか。</td>
+        <td>ターのユーザーが予約した任意の日付・会議室のチェックを外し、予約・解除ボタンをクリックする</td>
+        <td>チェックを外すことができず、予約・解除ボタンを押しても変わらない</td>
+        <td>チェックを外すことができず、予約・解除ボタンを押しても変わらない</td>
+        <td>[<span class="pass">合格</span>]</td>
+        <td>[特記事項]他のユーザーの予約ではチェックボックスが外せないため、他のユーザーの予約を削除してしまうことはない</td>
+      </tr>
+      <tr>
+        <td>FC-07</td>
+        <td>ログアウトボタンでセッションが破棄され、ログイン画面に遷移するか。</td>
+        <td>ログアウトボタンをクリックする</td>
+        <td>ログイン画面が表示される</td>
+        <td>ログイン画面が表示される</td>
+        <td>[<span class="pass">合格</span>]</td>
+        <td>[特記事項]なし</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <h5>ログ出力確認</h5>
+  <ul>
+    <li>
+      ログイン時、AOPによってDBアクセスログが出力されているか？<br>
+      結果: [<span class="pass">はい</span>]
+    </li>
+    <li>
+      SQL文の実行ログが正しく出力されているか？<br>
+      結果: [<span class="pass">はい</span>]
+    </li>
+    <li>
+      ログイン失敗時にエラーログが出力されているか？<br>
+      結果: [<span class="pass">はい</span>]
+    </li>
+  </ul>
+  <ul>
+    <li>特記事項: なし</li>
+  </ul>
+
+  <hr>
+  <h4>苦労した点</h4>
+  <ul>
+    <li>Thymeleaf 3.0.xでラムダ式がうまく動作しなかった</li>
+    <li>他のユーザーの予約を誤って削除できないようにする機能</li>
+    <li>コントローラー、サービス、リポジトリの分離、設計</li>
+  </ul>
+  <hr />
+
+
   <h3>java/Spring Boot2 掲示板</h3>　
   <p><a
       href="https://github.com/ekatopub/java-SpringMVCSample-keijiban">https://github.com/ekatopub/java-SpringMVCSample-keijiban</a>
     <br />※参考書籍　絶対にJavaプログラマーになりたい人へ　P645-
   </p>
-  <div style="text-align:center;"><img src="./images/SpringMVCSample-kaigishitsu-yoyaku.bmp" height="200" width="auto">
-  </div>
+
   <h4>開発環境</h4>
   　<p>windows10 Eclipse2025/03 JavaSE-11</p>
   <h4>スケジュール</h4>
@@ -159,8 +412,8 @@
 
   <h5>総合評価</h5>
   <ul>
-    <li><strong>テスト結果:</strong> [合格 / 不合格 / 条件付き合格]</li>
-    <li><strong>特記事項:</strong> [テスト全体を通しての所見や重要な問題点を簡潔に記載]</li>
+    <li><strong>テスト結果:</strong> [合格]</li>
+    <li><strong>特記事項:</strong> 苦労はしたが正常に実装することができた。</li>
   </ul>
 
   <hr>
@@ -187,7 +440,7 @@
         <td>ID: <code>0003</code> / PW: <code>hogefuga</code> を入力し、ログインボタンをクリックする</td>
         <td>投稿一覧画面へ遷移する</td>
         <td>投稿一覧画面へ遷移した</td>
-        <td>[合格]</td>
+        <td>[<span class="pass">合格</span>]</td>
         <td>[特記事項]なし</td>
       </tr>
       <tr>
@@ -196,7 +449,7 @@
         <td>ID: <code>invalid</code> / PW: <code>password</code> を入力し、ログインボタンをクリックする</td>
         <td>「ユーザーIDまたはパスワードを間違えています」と表示される</td>
         <td>「ユーザーIDまたはパスワードを間違えています」と表示された</td>
-        <td>[合格]</td>
+        <td>[<span class="pass">合格</span>]</td>
         <td>[特記事項]なし</td>
       </tr>
       <tr>
@@ -205,7 +458,7 @@
         <td>ブラウザの言語設定を英語に変更し、ID/PWを無効な値に設定する</td>
         <td>「Invalid user ID or password」と表示される</td>
         <td>「Invalid user ID or password」と表示された</td>
-        <td>[合格]</td>
+        <td>[<span class="pass">合格</span>]</td>
         <td>[特記事項]なし</td>
       </tr>
     </tbody>
@@ -282,7 +535,7 @@
     </li>
   </ul>
   <ul>
-    <li><strong>特記事項:</strong> [ログ出力に関しての所見を記載]</li>
+    <li><strong>特記事項:</strong> なし</li>
   </ul>
 
   <hr>
@@ -290,129 +543,33 @@
   <h5>未解決の問題点・課題</h5>
   <ul>
     <li><strong>課題名:</strong> ここまでについては問題なし</li>
-    <li><strong>内容:</strong> スケジュールの組み方を間違え、修正などで余計な時間がかかった</li>
+    <li><strong>内容:</strong> スケジュールの組み方を間違え、修正などで余計な時間がかかった。最初の設計や段取りが重要だと感じた</li>
     <li><strong>担当者:</strong> 加藤</li>
     <li><strong>対応状況:</strong> なし</li>
   </ul>
+  <h4>苦労した点</h4>
+  <ul>
+    <li>Thymeleaf 3.0.xでDateがうまく動作しなかった</li>
+    <li>CSRF対応</li>
+    <li>コントローラー、サービス、リポジトリの分離、設計</li>
+  </ul>
   <hr />
-  <h3>java/Spring Boot3 会議室予約システム</h3>　
-  <p><a
-      href="https://github.com/ekatopub/java-SpringMVCSample-kaigishitsu-yoyaku">https://github.com/ekatopub/java-SpringMVCSample-kaigishitsu-yoyaku</a>
-    <br />※参考書籍　絶対にJavaプログラマーになりたい人へ　P681-
-  </p>
-  <h4>開発環境</h4>
-  　<p>windows10 Eclipse2025/03 JavaSE-11</p>
-  <h4>プロジェクト概要</h4>
-  <p>このプロジェクトは<strong>会議室予約システム</strong>を開発するものです。主な機能は以下の通りです。</p>
 
-  <h5>主な機能</h5>
-  <ul>
-    <li><strong>ログイン機能</strong>: ユーザーIDとパスワードでログインします。ユーザーが存在しない場合はエラーメッセージを表示します。</li>
-    <li><strong>予約画面</strong>:
-      <ul>
-        <li>日付、時間帯、会議室を選択して予約できます。</li>
-        <li>自分が予約した場所は水色、他者が予約した場所は赤色で表示されます。</li>
-        <li>ログイン日を初期表示とし、前日・翌日の予約状況も確認できます。</li>
-      </ul>
-    </li>
-    <li><strong>予約・解除機能</strong>:
-      <ul>
-        <li>チェックを入れた部屋と時間帯の組み合わせで予約を登録・解除できます。</li>
-        <li>予約情報は「洗い替え」方式で、以前の登録情報を論理削除し、新しい情報を新規登録します。</li>
-      </ul>
-    </li>
-    <li><strong>ログアウト機能</strong>: ログインセッションを削除し、ログイン画面へ戻ります。</li>
-  </ul>
-
-  <h5>使用技術</h5>
-  <ul>
-    <li><strong>開発言語</strong>: Java</li>
-    <li><strong>フレームワーク</strong>: Java Spring Framework + JPA + Maven + javascript</li>
-    <li><strong>データベース</strong>: MariaDB</li>
-  </ul>
-
-  <h5>テーブル設計</h5>
-  <p>システムは4つのテーブルを使用します。</p>
-  <ul>
-    <li><strong>ユーザーテーブル（<code>user</code>）</strong>:
-      ユーザーID（<code>user_id</code>）とパスワード（<code>password</code>）、ユーザー名（<code>user_name</code>）を管理します。</li>
-    <li><strong>予約情報テーブル（<code>t_reservation</code>）</strong>:
-      予約の主情報（ID、ユーザーID、予約日、部屋ID、時間帯IDなど）を管理します。<code>is_deleted</code>フラグで論理削除を扱います。</li>
-    <li><strong>会議室マスタテーブル（<code>m_room</code>）</strong>: 会議室名（<code>name</code>）と削除フラグ（<code>is_deleted</code>）を管理します。
-    </li>
-    <li><strong>時間帯マスタテーブル（<code>m_time</code>）</strong>: 時間帯名（<code>name</code>）と削除フラグ（<code>is_deleted</code>）を管理します。
-    </li>
-  </ul>
-  <h4>会議室予約システム 開発スケジュール</h4>
-
-  <table>
-    <thead>
-      <tr>
-        <th>日目</th>
-        <th>時間</th>
-        <th>タスク</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1日目</td>
-        <td>5時間</td>
-        <td>
-          <strong>環境構築とログイン機能</strong><br>
-          ・環境セットアップ、DBテーブル作成 (1時間)<br>
-          ・ログイン画面のHTML/Thymeleaf、<code>LoginController</code>の作成 (3時間)<br>
-          ・Spring Securityによる認証処理の実装 (1時間)
-        </td>
-      </tr>
-      <tr>
-        <td>2日目</td>
-        <td>5時間</td>
-        <td>
-          <strong>予約画面のUIとマスタデータ表示</strong><br>
-          ・予約画面のHTML/Thymeleaf作成 (2時間)<br>
-          ・<code>m_time</code>と<code>m_room</code>のRepository/Service実装 (3時間)<br>
-          ・マスタデータの動的表示ロジック実装
-        </td>
-      </tr>
-      <tr>
-        <td>3日目</td>
-        <td>5時間</td>
-        <td>
-          <strong>予約機能の実装</strong><br>
-          ・<code>t_reservation</code>のRepository/Service実装 (3時間)<br>
-          ・予約状況の取得と画面への表示（色付け） (2時間)<br>
-          ・「予約/解除」ボタンのPOSTマッピング実装<br>
-          ・DBへの論理削除と新規登録ロジック実装
-        </td>
-      </tr>
-      <tr>
-        <td>4日目</td>
-        <td>5時間</td>
-        <td>
-          <strong>テストと最終確認</strong><br>
-          ・各機能の正常系テスト（ログイン、予約、解除、ログアウト） (3時間)<br>
-          ・異常系テスト（未ログイン時のリダイレクトなど） (2時間)<br>
-          ・バグ修正と画面表示の最終確認
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <hr />
-  <h3>java/Spring3学習用</h3>　
+  <h3>java/Spring3学習用</h3>
   <p><a
       href="https://github.com/ekatopub/java_study_202408_Java_Spring_test/">https://github.com/ekatopub/java_study_202408_Java_Spring_test/</a>
   </p>
   <h4>開発環境</h4>
-  　<p>windows10 Eclipse2025/03 JavaSE-11</p>
+  <p>windows10 Eclipse2025/03 JavaSE-11</p>
   <hr />
-  <h3>java1</h3>　
+  <h3>java1</h3>
   <p><a
       href="https://github.com/ekatopub/java_study_2024_00_Basic">https://github.com/ekatopub/java_study_2024_00_Basic</a>
   </p>
   <h4>開発環境</h4>
-  　<p>windows10 Eclipse JavaSE-11</p>
+  <p>windows10 Eclipse JavaSE-11</p>
   <hr />
-  　<h3>java2</h3>　
+  <h3>java2</h3>
   <p><a
       href="https://github.com/ekatopub/java_study_2024_01_janken">https://github.com/ekatopub/java_study_2024_01_janken</a>
   </p>
