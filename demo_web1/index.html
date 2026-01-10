@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+
+<head>
+  <meta charSet="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>ek Web Solutions</title>
+  <meta content="Web制作から運用まで、見た目だけでなく、成果を出し、運用し続けられるWebサイトを提供します。">
+  <link rel="stylesheet" href="./style.css" />
+  <script src="./function.js" defer></script>
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <button id="navToggle" class="nav-toggle" aria-controls="headerNav" aria-expanded="false" aria-label="メニューを開く">
+        ☰
+      </button>
+      <div class="header__inner">
+        <h1 class="header__logo">ek Web Solutions</h1>
+        <nav class="header__nav" id="headerNav">
+          <div class="nav__overlay"></div>
+          <div class="nav__inner">
+            <p class="nav__logo">ek Web Solutions</p>
+            <ul class="nav__list">
+              <li><a href="./">Home</a></li>
+              <li><a href="#service">Service</a></li>
+              <li><a href="#strength">About</a></li>
+              <li><a href="#technology">Technology</a></li>
+              <li><a href="./contact.html">Contact</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main">
+
+      <section class="hero">
+        <div class="hero__inner">
+          <h2 class="hero__title">
+            Web制作から運用まで、<br>
+            安心して任せられるパートナーを。
+          </h2>
+          <p class="hero__text">
+            見た目だけでなく、成果を出し、運用し続けられるWebサイトを提供します。
+          </p>
+          <a href="#service" class="button button--primary">
+            サービスを見る
+          </a>
+        </div>
+      </section>
+
+      <section class="service" id="service">
+        <div class="service__inner">
+          <h2 class="section-title">Service</h2>
+
+          <ul class="service__list">
+            <li class="service__item">
+              <h3 class="service__title">Webサイト制作</h3>
+              <p class="service__text">
+                コーポレートサイト・LP制作など、目的に合わせたWebサイトを制作します。
+              </p>
+            </li>
+
+            <li class="service__item">
+              <h3 class="service__title">運用・保守</h3>
+              <p class="service__text">
+                更新作業や障害対応など、公開後の運用もサポートします。
+              </p>
+            </li>
+
+            <li class="service__item">
+              <h3 class="service__title">サーバ対応</h3>
+              <p class="service__text">
+                サーバ監視や一次対応など、安定運用を支援します。
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="strength" id="strength">
+        <div class="strength__inner">
+          <h2 class="section-title">About</h2>
+          <p>デザインの派手さよりも、構造の分かりやすさや表示の速さ、保守しやすいコーディングを意識して取り組んでいます。<br />
+            デザイン的な要素が必要な場合には、別途デザイナーと提携して統一感のあるCIのご提案を行います。</p>
+          <ul class="strength__list">
+            <li>制作後の運用を見据えた設計</li>
+            <li>サーバ保守経験を活かした対応</li>
+            <li>分かりやすい説明と丁寧な実装</li>
+
+          </ul>
+        </div>
+      </section>
+
+      <section class="technology" id="technology">
+        <div class="technology__inner">
+          <h2 class="section-title">Our Technology</h2>
+          <p>HTML / CSS / JavaScript を用いたコーディングを中心に、堅実なWeb制作を行っています。</p>
+
+          <ul class="technology__list">
+            <li>HTML / CSS（レスポンシブ対応、保守しやすい設計、アクセシビリティ対応）</li>
+            <li>JavaScript / jQuery（DOM操作、UI制御）</li>
+            <li>VScode</li>
+            <li>Git / GitHub</li>
+            <li>サーバ保守・運用経験</li>
+          </ul>
+
+        </div>
+      </section>
+
+
+    </main>
+
+
+    <footer class="footer">
+      <div class="footer__inner">
+        <p class="footer__text">© ek Web Solutions</p>
+      </div>
+    </footer>
+  </div>
+</body>
