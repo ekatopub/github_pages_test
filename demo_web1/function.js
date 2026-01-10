@@ -2,10 +2,9 @@ const navToggle = document.getElementById("navToggle");
 const headerNav = document.getElementById("headerNav");
 
 navToggle.addEventListener("click", () => {
-	headerNav.classList.toggle("is-open");
 	// body スクロール制御
+	const isOpen = headerNav.classList.toggle("is-open");
 	document.body.classList.toggle("is-menu-open", isOpen);
-
 	// aria 状態更新
 	navToggle.setAttribute("aria-expanded", isOpen);
 	navToggle.setAttribute(
