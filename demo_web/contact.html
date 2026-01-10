@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+
+<head>
+  <meta charSet="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>お問い合わせ | ek Web Solutions</title>
+  <meta content="お問い合わせページ。Web制作や運用に関するご相談はこちらから。">
+  <link rel="stylesheet" href="/style.css" />
+  <script src="/function.js" defer></script>
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <button id="navToggle" class="nav-toggle" aria-controls="headerNav" aria-expanded="false" aria-label="メニューを開く">
+        ?
+      </button>
+      <div class="header__inner">
+        <h1 class="header__logo">ek Web Solutions</h1>
+        <nav class="header__nav" id="headerNav">
+          <div class="nav__overlay"></div>
+          <div class="nav__inner">
+            <p class="nav__logo">ek Web Solutions</p>
+            <ul class="nav__list">
+              <li><a href="/">Home</a></li>
+              <li><a href="/index.html#service">Service</a></li>
+              <li><a href="/index.html#strength">About</a></li>
+              <li><a href="/index.html#technology">Technology</a></li>
+              <li><a href="/contact.html">Contact</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main class="main">
+      <section class="contact" id="contact">
+        <div class="contact__inner">
+          <h2 class="section-title">お問い合わせ</h2>
+          <p>Web制作・運用・保守などに関するご相談・ご依頼は、下記フォームよりお気軽にご連絡ください。<br />（※pages内では仕様上、実際には送信できません。）</p>
+          <form class="contact__form" novalidate>
+            <div class="form-group">
+              <label for="name">お名前</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">メールアドレス</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="message">お問い合わせ内容</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="button button--primary">送信</button>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="footer__inner">
+        <p class="footer__text">c ek Web Solutions</p>
+      </div>
+    </footer>
+  </div>
+</body>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('.contact__form');
+    form.addEventListener('submit', function (e) {
+      // お名前
+      const name = form.name.value.trim();
+      // メール
+      const email = form.email.value.trim();
+      // メッセージ
+      const message = form.message.value.trim();
+
+      // メールアドレス形式チェック
+      const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+
+      if (!name) {
+        alert('お名前を入力してください');
+        e.preventDefault();
+        return;
+      }
+      if (!email || !emailPattern.test(email)) {
+        alert('正しいメールアドレスを入力してください');
+        e.preventDefault();
+        return;
+      }
+      if (!message) {
+        alert('お問い合わせ内容を入力してください');
+        e.preventDefault();
+        return;
+      }
+    });
+  });
+</script>
+
+</html>

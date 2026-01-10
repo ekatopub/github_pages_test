@@ -8,6 +8,17 @@
   <!-- loads all the styles (including icons and images) from jsDelivr -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/alvaromontoro/almond.css@latest/dist/almond.min.css" />
   <style>
+    body {
+      font-family: "Segoe UI", "Hiragino Kaku Gothic ProN", "Meiryo", "Yu Gothic", "sans-serif";
+      color: #222;
+      line-height: 1.7;
+    }
+
+    img {
+      margin: 0 0 16px;
+      border: 1px solid #555;
+    }
+
     .pass {
       color: green;
       font-weight: bold;
@@ -22,89 +33,113 @@
 
 <body>
   <h1>Eiichi Kato Programming Sample</h1>
+  <p>本ページはgithub_pagesの制約によりalmond FWを使用したシンプルな一覧ページです。</p>
   <h2>取得を目指している資格・学習エリア</h2>
   <ul>
+    <li>応用情報技術者試験（2025.12　合格）</li>
     <li>OCP　Java SE11　silver（2025.07　合格）</li>
     <li>サーティファイ　Javaプログラミング能力認定試験（2025.07　2級合格）</li>
+    <li>PHP技術者認定試験（2025.12　初級　合格）</li>
     <li>Python3技術者認定試験（2025.07　基礎試験　合格）</li>
     <li>Python3 エンジニア認定データ分析試験（2025.12　合格）</li>
-    <li>応用情報技術者試験（2025.12　合格）</li>
+    <li>Foundational C# Certification（Microsoft 認定のC#資格 2025.12取得）</li>
     <li>アプリケーション技術者試験　</li>
     <li>HTML5プロフェッショナル認定試験</li>
     <li>サーティファイ　C言語プログラミング能力認定試験</li>
     <li>サーティファイ　Pythonプログラミング能力認定試験</li>
-    <li>PHP技術者認定試験（2025.12　初級　合格）</li>
     <li>Ruby技術者認定試験</li>
-    <li>Foundational C# Certification (Microsoft 認定のC#資格 2025.12取得）</li>
     <li>中小企業診断士（2025年　1次試験合格）</li>
     <li>Node.js,TypeScript,React,Vue.js,Flutter,Next.jsなどのモダンアーキテクチャ</li>
   </ul>
   <hr />
+  <h2>プログラムサンプル</h2>
   <ul>
+    <li><a href="#html">html/css/javascriptサンプル</a></li>
     <li><a href="#java">Javaプログラムサンプル</a></li>
-    <li><a href="#php">PHPプログラムサンプル</a></li>
     <li><a href="#typescript">React/TypeScriptプログラムサンプル</a></li>
     <li><a href="#nextjs">Next.js/javascriptプログラムサンプル</a></li>
+    <li><a href="#php">PHPプログラムサンプル</a></li>
   </ul>
+  <p>※各画像はダブルクリックで拡大表示されます。</p>
   <hr />
+  <h2 id="html">html/css/javascriptサンプル</h2>
+  <ul>
+    <li>コーポレートサイトのイメージ</li>
+    <p>シンプルなレスポンシブ対応のサイトです。<br /><a href="/demo_web1/" target="_blank" rel="nofollow noopener">こちら</a>で見ることができます。</p>
+    <p>PC表示</p>
+    <div style="text-align:center;"><img src="./images/corporate_pc.jpg" alt="コーポレートサイト PC表示" width=300 height=auto
+        ondblclick=" enlargeImage(this)" />
+    </div>
+    <p>モバイル表示</p>
+    <div style="text-align:center;"><img src="./images/corporate_sp.jpg" alt="コーポレートサイト モバイル表示" width=200 height=auto
+        ondblclick=" enlargeImage(this)" />
+    </div>
+  </ul>
 
 
   <h2 id="nextjs">Next.js/javascriptプログラムサンプル</h2>
   <h3>フリマアプリ（ユーザーが商品を出品・登録できるアプリ）javascript版</h3>
-	<div style="text-align:center;"><img src="./images/react-typescript-market-app.jpg" alt="フリマアプリ（ユーザーが商品を出品・登録できるアプリ）javascript版" width=600 height=auto /></div>
+  <div style="text-align:center;"><img src="./images/react-typescript-market-app.jpg"
+      alt="フリマアプリ（ユーザーが商品を出品・登録できるアプリ）javascript版" width=300 height=auto ondblclick=" enlargeImage(this)" /></div>
   <p>
     <a href="https://fleemarketapp-with-nextjs-nodejs-ja.vercel.app/" target="_blank"
-      rel="nofollow noopener">こちら（vercel）で利用できます。</a><br />
-    <a
+      rel="nofollow noopener">こちら（vercel）</a>で利用できます。<br />
+    ソース → <a
       href="https://github.com/ekatopub/fleemarketapp-with-nextjs-nodejs-javascript">https://github.com/ekatopub/fleemarketapp-with-nextjs-nodejs-javascript</a><br />
     <br />※参考書籍　Next.jsでつくるフルスタックアプリ with TypeScriptプログラムサンプル
-    <br />React/Next.js+mongoDB+cloudinary.com+javascript 
   </p>
-    <hr />
+  <h4>技術スタック</h4>
+  <p><br />React/Next.js+mongoDB+cloudinary.com+javascript</p>
+  <hr />
 
   <h2 id="typescript">React/TypeScriptプログラムサンプル</h2>
   <h3>フリマアプリ（ユーザーが商品を出品・登録できるアプリ）TypeScript版</h3>
-	<div style="text-align:center;"><img src="./images/react-typescript-market-app.jpg"alt="フリマアプリ（ユーザーが商品を出品・登録できるアプリ）javascript版" width=600 height=auto /></div>
+  <div style="text-align:center;"><img src="./images/react-typescript-market-app.jpg"
+      alt="フリマアプリ（ユーザーが商品を出品・登録できるアプリ）javascript版" width=300 height=auto ondblclick=" enlargeImage(this)" /></div>
 
   <p>
     <a href="https://fleemarketapp-nextjs-react-typescri.vercel.app/" target="_blank"
-      rel="nofollow noopener">こちら（vercel）で利用できます。</a><br />
-    <a
+      rel="nofollow noopener">こちら（vercel）</a>で利用できます。<br />
+    ソース → <a
       href="https://github.com/ekatopub/fleemarketapp-nextjs-react-typescript">https://github.com/ekatopub/fleemarketapp-nextjs-react-typescript</a><br />
     <br />※参考書籍　Next.jsでつくるフルスタックアプリ with TypeScriptプログラムサンプル
-    <br />React/Next.js+mongoDB+cloudinary.com+TypeScript
   </p>
-    <hr />
+  <h4>技術スタック</h4>
+  <p>React/Next.js+mongoDB+cloudinary.com+TypeScript</p>
+
+  <hr />
   <h3>都市の天気情報をAPIから受け取って表示させるプログラム</h3>
-  <div style="text-align:center;"><img src="./images/react-typescript-weather-app.jpg" alt="都市の天気情報をAPIから受け取って表示させるプログラム"  width=600 height=auto /></div>
+  <div style="text-align:center;"><img src="./images/react-typescript-weather-app.jpg"
+      alt="都市の天気情報をAPIから受け取って表示させるプログラム" width=300 height=auto ondblclick=" enlargeImage(this)" /></div>
   <p>
-    <a href="https://react-weather-24c4c4.netlify.app/" target="_blank" rel="nofollow noopener">こちらで利用できます。</a><br />
-    <a
+    <a href="https://react-weather-24c4c4.netlify.app/" target="_blank"
+      rel="nofollow noopener">こちら（netlify）</a>で利用できます。<br />
+    ソース → <a
       href="https://github.com/ekatopub/react-typescript-weather-app">https://github.com/ekatopub/react-typescript-weather-app</a><br />
     <br />※参考書籍　はじめてつくるReactアプリ　with　TypeScript
-    <br />フロントエンド：React+TypeScript
   </p>
+  <h4>技術スタック</h4>
+  <p>フロントエンド：React+TypeScript</p>
 
-
-    <hr />
+  <hr />
   <h2 id="java">Javaプログラムサンプル</h2>
   <ul>
     <li><a href="#kaigisitsuyoyaku">java/Spring Boot3 会議室予約システム</a></li>
     <li><a href="#keijiban">java/Spring Boot2 掲示板</a></li>
-    <li></li>
   </ul>
 
 
 
-  <h3 id="kaigisitsuyoyaku">java/Spring Boot3 会議室予約システム</h3>　
-  <p><a
+  <h3 id="kaigisitsuyoyaku">java/Spring Boot3 会議室予約システム</h3>
+  <p>ソース → <a
       href="https://github.com/ekatopub/java-SpringMVCSample-kaigishitsu-yoyaku">https://github.com/ekatopub/java-SpringMVCSample-kaigishitsu-yoyaku</a>
     <br />※参考書籍　絶対にJavaプログラマーになりたい人へ　P681-
   </p>
-  <div style="text-align:center;"><img src="./images/SpringMVCSample-kaigishitsu-yoyaku.bmp" width=600 height=auto ">
+  <div style="text-align:center;"><img src="./images/SpringMVCSample-kaigishitsu-yoyaku.bmp" width=300 height=auto
+      ondblclick=" enlargeImage(this)">
   </div>
   <ul>
-    <li><a href="#kankyo">開発環境</a></li>
+    <li><a href=" #kankyo">開発環境</a></li>
     <li><a href="#gaiyo">プロジェクト概要</a></li>
     <li><a href="#kinou">主な機能</a></li>
     <li><a href="#gijyutsu">使用技術</a></li>
@@ -115,7 +150,7 @@
   </ul>
 
   <h4 id="ky-kankyo">開発環境</h4>
-  　<p>windows10 Eclipse2025/03 JavaSE-11</p>
+  <p>windows10 Eclipse2025/03 JavaSE-11</p>
   <h4 id="ky-gaiyo">プロジェクト概要</h4>
   <p>このプロジェクトは<strong>会議室予約システム</strong>を開発するものです。主な機能は以下の通りです。</p>
 
@@ -152,9 +187,11 @@
       ユーザーID（<code>user_id</code>）とパスワード（<code>password</code>）、ユーザー名（<code>user_name</code>）を管理します。</li>
     <li><strong>予約情報テーブル（<code>t_reservation</code>）</strong>:
       予約の主情報（ID、ユーザーID、予約日、部屋ID、時間帯IDなど）を管理します。<code>is_deleted</code>フラグで論理削除を扱います。</li>
-    <li><strong>会議室マスタテーブル（<code>m_room</code>）</strong>: 会議室名（<code>name</code>）と削除フラグ（<code>is_deleted</code>）を管理します。
+    <li><strong>会議室マスタテーブル（<code>m_room</code>）</strong>:
+      会議室名（<code>name</code>）と削除フラグ（<code>is_deleted</code>）を管理します。
     </li>
-    <li><strong>時間帯マスタテーブル（<code>m_time</code>）</strong>: 時間帯名（<code>name</code>）と削除フラグ（<code>is_deleted</code>）を管理します。
+    <li><strong>時間帯マスタテーブル（<code>m_time</code>）</strong>:
+      時間帯名（<code>name</code>）と削除フラグ（<code>is_deleted</code>）を管理します。
     </li>
   </ul>
   <h4 id="ky-schedule">会議室予約システム 開発スケジュール</h4>
@@ -228,9 +265,6 @@
     <li><strong>テスト結果:</strong> [合格 ]</li>
     <li><strong>特記事項:</strong> 動作は問題ないが、エラーメッセージを追加したり、他ユーザーによる予約のユーザー名をポップアップ表示させるなどすると親切になる</li>
   </ul>
-
-  <hr>
-
   <h5>テストケース詳細</h5>
 
   <h6>ログイン機能</h6>
@@ -362,7 +396,7 @@
 
 
   <h3 id="keijiban">java/Spring Boot2 掲示板</h3>
-  <p><a
+  <p>ソース → <a
       href="https://github.com/ekatopub/java-SpringMVCSample-keijiban">https://github.com/ekatopub/java-SpringMVCSample-keijiban</a>
     <br />※参考書籍　絶対にJavaプログラマーになりたい人へ　P645-
   </p>
@@ -633,36 +667,36 @@
   <hr />
 
   <h3>java/Spring3学習用</h3>
-  <p><a
+  <p>ソース → <a
       href="https://github.com/ekatopub/java_study_202408_Java_Spring_test/">https://github.com/ekatopub/java_study_202408_Java_Spring_test/</a>
   </p>
   <h4>開発環境</h4>
   <p>windows10 Eclipse2025/03 JavaSE-11</p>
   <hr />
   <h3>java1</h3>
-  <p><a
+  <p>ソース → <a
       href="https://github.com/ekatopub/java_study_2024_00_Basic">https://github.com/ekatopub/java_study_2024_00_Basic</a>
   </p>
   <h4>開発環境</h4>
   <p>windows10 Eclipse JavaSE-11</p>
   <hr />
   <h3>java2</h3>
-  <p><a
+  <p>ソース → <a
       href="https://github.com/ekatopub/java_study_2024_01_janken">https://github.com/ekatopub/java_study_2024_01_janken</a>
   </p>
   <h4>開発環境</h4>
   <p>windows10 Eclipse JavaSE-11</p>
   <hr />
   <h3>java/JSP3</h3>
-  <p><a
+  <p>ソース → <a
       href="https://github.com/ekatopub/java_study_202405_JSP_test_with_tomcat/">https://github.com/ekatopub/java_study_202405_JSP_test_with_tomcat/</a>
   </p>
   <h4>開発環境</h4>
   <p>windows10 Eclipse JavaSE-11 Apache Tomcat9</p>
   <hr />
 
-  <h3>java/SQL1</h3>　
-  <p><a
+  <h3>java/SQL1</h3>
+  <p>ソース → <a
       href="https://github.com/ekatopub/java_study_2024_03_SQLtest">https://github.com/ekatopub/java_study_2024_03_SQLtest</a>
   </p>
   <h4>開発環境</h4>
@@ -672,7 +706,7 @@
   <h2 id="php">phpプログラムサンプル</h2>
   <h3>ネットショップ　楽天APIから指定KWで商品データをインポート</h3>
   <p>楽天APIから指定KWで商品データをインポートし、ネットショップとして販売する。</p>
-  <p><a href="https://github.com/ekatopub/phponlineshoptest">https://github.com/ekatopub/phponlineshoptest</a></p>
+  <p>ソース →<a href="https://github.com/ekatopub/phponlineshoptest">https://github.com/ekatopub/phponlineshoptest</a></p>
   <h4>開発環境</h4>
   <p>windows10 VScode XAMPP php8 GitGUI</p>
   <h4>ロードマップ・開発フェーズ</h4>
@@ -701,6 +735,35 @@
   </script>
   <!-- End Matomo Code -->
 
+  <script> function enlargeImage(img) {
+      // 拡大用のdivを作成 
+      let modal = document.createElement('div');
+      modal.style.position = 'fixed';
+      modal.style.top = 0;
+      modal.style.left = 0;
+      modal.style.width = '100vw';
+      modal.style.height = '100vh';
+      modal.style.background = 'rgba(0,0,0,0.7)';
+      modal.style.display = 'flex';
+      modal.style.alignItems = 'center';
+      modal.style.justifyContent = 'center';
+      modal.style.zIndex = 9999;
+      // 拡大画像
+      let bigImg = document.createElement('img');
+      bigImg.src = img.src;
+      bigImg.style.maxWidth = '90vw';
+      bigImg.style.maxHeight = '90vh';
+      bigImg.style.boxShadow = '0 0 20px #fff';
+
+      // クリックで閉じる
+      modal.onclick = function () { document.body.removeChild(modal); };
+
+      modal.appendChild(bigImg);
+      document.body.appendChild(modal);
+    }
+  </script>
+
 </body>
+
 
 </html>
